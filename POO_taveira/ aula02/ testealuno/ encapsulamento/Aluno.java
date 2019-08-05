@@ -1,17 +1,19 @@
-public class Aluno {
+ public class Aluno {
 
 	//atributos
 	private String nome;
 	private String cpf;
 	private String semestre;
+	private String matricula;
 	
 	public Aluno () {
 	}
 	//////////////////////////////////////////////////////
-	public Aluno(String nome, String cpf, String semestre) {
+	public Aluno(String nome, String cpf, String semestre, String matricula) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.semestre = semestre;
+		this.matricula = matricula;
 	}
 	//////////////////////////////////////////////////////
 	public String getNome() {
@@ -32,12 +34,19 @@ public class Aluno {
 	public void setSemestre (String semestre) {
 		this.semestre = semestre;
 	}
-	
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 	////////////////////////////////////////////
 	public void mostraReferencia () {
 
         System.out.println("Alunos: " + this);
 	 }
+	
 	 
 	 
 }
+Detalhes
