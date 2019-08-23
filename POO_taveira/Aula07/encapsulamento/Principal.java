@@ -1,8 +1,6 @@
 public class Principal {
 
-
-
-	public static void main (String args[]) {
+    public static void main (String args[]) {
         // Criar um Cliente
         Cliente C1 = new Cliente("Jose Maria");
         
@@ -18,7 +16,7 @@ public class Principal {
         nf1.setCliente(C1);
 
         // Armazena a data atual (pega a data do sistema)
-        nf1.setDataEmissao (java.util.Calendar.getInstance());
+        nf1.setDataEmissao(java.util.Calendar.getInstance());
 
         // Armazena o numero da Nota Fiscal
         nf1.setNumero(123);
@@ -36,24 +34,13 @@ public class Principal {
         nf1.inserirItemNotaFiscal(itnf2);
         nf1.inserirItemNotaFiscal(itnf3);
         
-   
         
         //
-        System.out.println("Bodega da Pitombeira - CUPOM FISCAL - ");
-        System.out.println("Nota Fiscal: " + nf1.getNumero() +"\t\tData:20/08/2019 ");
-        System.out.println("Cliente: "+C1.getNome() + "\t\t---------------");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("Seq Descricao                Valor Unitario  Qtd    Valor Item");
-        System.out.println(":"+ itnf1.getSequencial()+ "   "+p1.getDescricao() + "                  "+p1.getValor()+ "     "+p1.getUnidade()+"   " + " "+itnf1.getQuantidade()+ "    "+p1.getValor()+"    001");
-        System.out.println(":"+ itnf2.getSequencial()+ "   "+p2.getDescricao() + "                   "+p2.getValor()+ "     "+p2.getUnidade()+"   " + " "+itnf2.getQuantidade()+ "     "+p1.getValor()+"    002");
-        System.out.println(":"+ itnf3.getSequencial()+ " "+p3.getDescricao() + "                   "+p3.getValor()+ "     "+p3.getUnidade()+"   " + " "+itnf3.getQuantidade()+ "     "+p3.getValor()+"    003");
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("O valor da Nota Fiscal= " + nf1.calcularValorNota());
+        System.out.println("O valor da Nota Fiscal= " + nf1.ImprimirNota());
 
 
         
 
     }
 
-	
 }
