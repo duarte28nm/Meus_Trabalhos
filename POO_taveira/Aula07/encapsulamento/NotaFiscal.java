@@ -1,12 +1,17 @@
 import java.util.Calendar;
 import java.util.ArrayList;
-
+import java.text.SimpleDateFormat;
 
 public class NotaFiscal {
     private int  numero;
     private Calendar dataEmissao;
     private ArrayList<ItemNotaFiscal> items;
     private Cliente cliente;
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    Calendar cal = Calendar.getInstance();
+    
+    
 
     public NotaFiscal() {
         this.items = new ArrayList<ItemNotaFiscal>();
@@ -59,7 +64,7 @@ public class NotaFiscal {
         float valorNota=0;
         
         System.out.println("Bodega da Pitombeira - CUPOM FISCAL - ");
-        System.out.println("Nota Fiscal: " + this.getNumero() +"\t\tData:"+ this.getDataEmissao().getTime());
+        System.out.println("Nota Fiscal: " + this.getNumero() +"\t\tData:"+ sdf.format(cal.getTime()));
         System.out.println("Cliente: "+ this.cliente.getNome() + "\t\t---------------");
         System.out.println("_______________________________________________________________");
         System.out.println("");
