@@ -6,7 +6,7 @@ public class Principal {
         
         // Criar tres objetos de Produto
         Produto p1 = new Produto("Farinha", "KG", 1.00f);
-        Produto p2 = new Produto("Feijão", "KG", 5.00f);
+        Produto p2 = new Produto("Feijão--", "KG", 5.00f);
         Produto p3 = new Produto("Macarrao", "PC", 3.50f);
         
         // Cria uma Nota Fiscal
