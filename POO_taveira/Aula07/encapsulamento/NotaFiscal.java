@@ -8,7 +8,7 @@ public class NotaFiscal {
     private ArrayList<ItemNotaFiscal> items;
     private Cliente cliente;
     
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy h:mm:ss");
     Calendar cal = Calendar.getInstance();
     
     
