@@ -67,8 +67,8 @@ public class NotaFiscal {
         System.out.println("Nota Fiscal: " + this.getNumero() +"\t\tData:"+ sdf.format(cal.getTime()));
         System.out.println("Cliente: "+ this.cliente.getNome() + "\t\t---------------");
         System.out.println("_______________________________________________________________");
-        System.out.println("");
-        System.out.println("Seq Descricao                Valor Unitario  Qtd    Valor Item");
+        System.out.println("|                                                              |");
+        System.out.println("|Seq  Descricao                Valor Unitario  Qtd   Valor Item|");
        
         //Valor item
         float valorItem;
@@ -79,13 +79,13 @@ public class NotaFiscal {
             // vai somando a variavel valorNota a quantidade de cada item * o valor
             // do produto associado ao item
         	valorItem = itnf.getQuantidade()*itnf.getProduto().getValor();
-        	System.out.println("|"+ itnf.getSequencial() + "  " + itnf.getProduto().getDescricao() + "------------------" +itnf.getProduto().getValor() + " -----" + itnf.getProduto().getUnidade() + "-----"+ itnf.getQuantidade()+ "-------" +valorItem);                                                  
+        	System.out.println("|  "+ itnf.getSequencial() + "  " + itnf.getProduto().getDescricao() + "------------------" +itnf.getProduto().getValor() + " ---" + itnf.getProduto().getUnidade() + "------"+ itnf.getQuantidade()+ "-----|" +valorItem+ "---|");                                                  
         	 
             valorNota = valorNota +
                         (itnf.getQuantidade() * itnf.getProduto().getValor());
         }
         
-        System.out.println("_______________________________________________________________");
+        System.out.println("|______________________________________________________________|");
         System.out.println("");
         return valorNota;
         
