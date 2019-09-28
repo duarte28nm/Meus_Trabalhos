@@ -1,5 +1,6 @@
 
 
+	
 	class MovimentoFolha{
 		
   private String descrição;
@@ -19,9 +20,9 @@
     } else 
     				if(tipoMovimento == "D"){
     			this.colaborador = colaborador;
-    	  	this.tipoMovimento = TipoMovimento.D;
-    	  this.descrição = descrição;
-    	this.valor = valor;
+    		  this.tipoMovimento = TipoMovimento.D;
+    	  	this.descrição = descrição;
+    	  this.valor = valor;
     }
   }
 
