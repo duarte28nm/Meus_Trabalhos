@@ -1,75 +1,89 @@
-public class FolhaPagamento {
+import java.util.ArrayList;
 
-	private int mes;
-	private float totalDescontos;
-	private float totalProventos;
-	private int ano;
-	private float calcularFolha;
-	private ArrayList<MovimentoFolha> items;
+	class FolhaPagamento {
+		
+  private int mes;
+  private float totalDesconto;
+  private float totalProventos;
+  private int ano;
+  private ArrayList<MovimentoFolha> items;
+  private ArrayList<Colaborador> items2;
 
-	
-	public FolhaPagamento() {
-		this.items =  new ArrayList<MovimentoFolha>();
+  
+  //THIS
+  FolhaPagamento(int mes,int ano){
+    this.mes = mes;
+    this.ano = ano;
+    this.items = new ArrayList<MovimentoFolha>();
+    this.items2 = new ArrayList<Colaborador>();
+  }
 
-	}
-	
-	
-	public FolhaPagamento(int mes, int ano, float totalDescontos, float totalProventos, float calcularFolha) {
-		this.mes = mes;
-		this.totalDescontos = totalDescontos;
-		this.totalProventos = totalProventos;
-		this.ano = ano;
-		this.calcularFolha = calcularFolha;
-		}
-	
-
-
-
-	public int getMes() {
+  
+  
+  
+  //GET E SET
+  	public ArrayList<MovimentoFolha> getMovimentos(){
+    return items;
+  }
+  	public int getMes() {
 		return mes;
-	}
+  } 
 	public void setMes(int mes) {
 		this.mes = mes;
-	}
-	public float getTotalDescontos() {
-		return totalDescontos;
-	}
-	public void setTotalDescontos(float totalDescontos) {
-		this.totalDescontos = totalDescontos;
-	}
+  }  
+	public float getTotalDesconto() {
+		return totalDesconto;
+  }  
+	public void setTotalDesconto(float totalDesconto) {
+		this.totalDesconto = totalDesconto;
+  }
 	public float getTotalProventos() {
 		return totalProventos;
-	}
+  }  
 	public void setTotalProventos(float totalProventos) {
 		this.totalProventos = totalProventos;
-	}
+  } 
 	public int getAno() {
 		return ano;
-	}
+  }  
 	public void setAno(int ano) {
 		this.ano = ano;
-	}
-	public float getCalcularFolha() {
-		return calcularFolha;
-	}
-	public void setCalcularFolha(float calcularFolha) {
-		this.calcularFolha = calcularFolha;
-	}
-	public ArrayList<MovimentoFolha> getItems() {
-        return items;
-    }
+  } 
+	
+	
+	
+	//INSERIR MOVIMENTO = ITEM
+  public void inserirMovimento(MovimentoFolha item){
+    this.items.add(item);
+  }
 
-    public void setItems(ArrayList<MovimentoFolha> items) {
-        this.items = items;
+    //INSERIR COLABORADOR = ITEM2
+  public void inserirColaborador(Colaborador item2){
+    this.items2.add(item2);
+  }
+
+  
+  
+  //CALCULAR FOLHA
+  public String calcularFolha(){
+    float salarios = 0;
+    float proventos = 0;
+    float descontos = 0;
+    float valorReceber = 0;
+    for(MovimentoFolha item: this.items){
+      if(item.getDescrição() == "Salario"){
+        salarios+=item.getValor();
+      } else if(item.getTipoMovimento() == TipoMovimento.P){
+        proventos+=item.getValor();
+      } else if(item.getTipoMovimento() == TipoMovimento.D){
+        descontos+=item.getValor();
+      }
     }
     
-	
-    
-    
-    
-	 public void inserirMovimento (MovimentoFolha item) {
-	        this.items.add(item);
-	    }
-	
-	
+    //PRINTAR
+    valorReceber = salarios + proventos;
+    valorReceber -= descontos;   
+    String retorno = String.format("Total de Salários=%,10.2f    Total de Proventos =%,10.2f    Total de Descontos =%,10.2f     Valor a Receber =%,10.2f ", salarios,proventos,descontos,valorReceber);
+    return retorno;
+  }
 }
