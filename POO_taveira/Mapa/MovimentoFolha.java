@@ -1,5 +1,6 @@
 
-class MovimentoFolha{
+
+	class MovimentoFolha{
 		
   private String descrição;
   private float valor;
@@ -10,19 +11,17 @@ class MovimentoFolha{
   
   //THIS
   public MovimentoFolha(Colaborador colaborador, String descrição, float valor, String tipoMovimento){
-    //TIPO = P
 	  if(tipoMovimento == "P"){
 		  this.colaborador = colaborador;
 		  	this.tipoMovimento = TipoMovimento.P;
 		  		this.descrição = descrição;
 		  			this.valor = valor;
-    } else
-    //TIPO = D
-      if(tipoMovimento == "D"){
-    	  this.colaborador = colaborador;
+    } else 
+    				if(tipoMovimento == "D"){
+    			this.colaborador = colaborador;
     	  	this.tipoMovimento = TipoMovimento.D;
-    	  		this.descrição = descrição;
-    	  			this.valor = valor;
+    	  this.descrição = descrição;
+    	this.valor = valor;
     }
   }
 
