@@ -1,4 +1,3 @@
-
 public enum TipoMovimento {
 
 	P(1), D(2);
