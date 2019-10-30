@@ -1,7 +1,19 @@
-	
-	class Colaborador{
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-  private int codigo;
+import java.io.Serializable;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="Colaborador")
+public class Colaborador implements Serializable { 
+		@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+  private long id;
   private String nome;
   private String endereco;
   private String telefone;
@@ -10,10 +22,19 @@
   private String cpf;
   private float salarioAtual;
 
+  @JsonIgnore
+  	@OneToMany(fetch = FetchType.LAZY,mappedBy = "Colaborador")
+  private List<MovimentoFolha> movimento=new ArrayList<>();
   
+  
+  		@ManyToOne(fetch= FecthType.LAZY)
+  		@JoinColumn(name="folhaPagamento_id")
+  		@JsonIgnore
+  		
   //This
-  Colaborador(int codigo,String nome,String endereco,String telefone,String bairro,String cep,String cpf,float salarioAtual){
-    this.codigo = codigo;
+  		public Colaborador() {}
+  	public Colaborador(long id,String nome,String endereco,String telefone,String bairro,String cep,String cpf,float salarioAtual){
+    this.id = id;
     this.nome = nome;
     this.endereco = endereco;
     this.telefone = telefone;
@@ -24,13 +45,27 @@
   }
 
   
+  	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  				@JsonIgnore
+  	public FolhaPagamento() {
+  					return folhapagamento;
+  							}
+  				@JsonIgnore
+  	public void setFolhaPagamento(FolhaPagamento folhaPagamento) {
+  					this.folhaPagamento = folhaPagamento;
+  				}
+  				@JsonIgnore
+  	public long getFolhaPagamentoId() {return folhaPagamento.getId();}
+  	
+  	public long getId() {
+  		return id;
+  	}
+  	public void setId(long id) {
+  		this.id=id;
+  	}
+  	
   //GET e SET
-  	public int getCodigo() {
-		return codigo;
-  }
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-  }  
+  	
 	public String getNome() {
 		return nome;
   }  
@@ -81,7 +116,7 @@
     float totalProventos=0;
     float totalDescontos = 0;  
     for(MovimentoFolha movimento: folha.getMovimentos()){
-      if(movimento.getColaborador().getCodigo() == this.codigo){
+      if(movimento.getColaborador().getId() == this.id){
         if(movimento.getDescrição() == "Salario"){
           salario+=movimento.getValor();
         } else if(movimento.getTipoMovimento() == TipoMovimento.P){
@@ -93,7 +128,7 @@
     }
     //PRINTAR
     System.out.println ("");
-    String retorno = String.format("Codigo:%4d    Nome:%s\n   Salário:%,10.2f    Total Proventos:%,10.2f     Total Descontos: %,11.2f     Valor Liquido a Receber: %,10.2f\n", this.codigo,this.nome,salario,totalProventos,totalDescontos,(salario+totalProventos-totalDescontos));
+    String retorno = String.format("Id:%4d    Nome:%s\n   Salário:%,10.2f    Total Proventos:%,10.2f     Total Descontos: %,11.2f     Valor Liquido a Receber: %,10.2f\n", this.id,this.nome,salario,totalProventos,totalDescontos,(salario+totalProventos-totalDescontos));
     return retorno;
   }
 }
